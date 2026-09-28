@@ -1,6 +1,7 @@
 import { cp, mkdir, rm, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-const root = new URL('../', import.meta.url).pathname;
+import { fileURLToPath } from 'node:url';
+const root = fileURLToPath(new URL('../', import.meta.url));
 const pages = ['index.html', 'support.html', 'privacy.html', 'terms.html', 'refund.html'];
 for (const page of pages) {
   const html = await readFile(join(root, page), 'utf8');
